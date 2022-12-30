@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+  labels:
+    app: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgresdb
+          image: postgres:12-alpine
+          ports:
+            - containerPort: 5432
+
+# template (core of a deployment) : Creates Pods with "postgres:12-alpine" image
+# label -----> "release": "stable", "env": "dev", "tier": "frontend" etc.
+# When we have multiple replicas of the same Pod, each Pod will get a unique name. However, they can share the same label.
+# selector:matchLabels ------> Match all Pods with label "app:postgres"
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+spec:
+  selector:
+    app.kubernetes.io/name: postgres
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 5432
+
+# selector: selects Pods to forward the request to, selecting Pods using selector label in Deployment
+# request -----> postgres Service (port: 8080) -----> Pod (pod: 5432)
+#                                           targetPort:5432
