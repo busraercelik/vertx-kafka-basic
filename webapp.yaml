@@ -41,9 +41,11 @@ kind: Service
 metadata:
   name: webapp-service
 spec:
+  type: NodePort #default=ClusterIP(an Internal Service); NodePort(an External Service)
   selector:
     app.kubernetes.io/name: webapp
   ports:
     - protocol: TCP
       port: 8085
       targetPort: 8085
+      nodePort: 30100 #(must be between 30_000 - 32_767)
