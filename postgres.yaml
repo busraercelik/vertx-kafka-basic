@@ -19,6 +19,17 @@ spec:
           image: postgres:12-alpine
           ports:
             - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: postgres-user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: postgres-password
 
 # template (core of a deployment) : Creates Pods with "postgres:12-alpine" image
 # label -----> "release": "stable", "env": "dev", "tier": "frontend" etc.

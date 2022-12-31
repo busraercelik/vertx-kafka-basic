@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: postgres-config
 data:
-  psql-url: postgres-service
+  postgres-url: postgres-service
 
 # postgres-service will be called (postgres.yaml)

@@ -20,10 +20,12 @@ services:
     depends_on:
       - zookeeper
   consumer_app:
+    image: bercelik/consumer_app:v1.0
     build: ./consumer-app/
     depends_on:
       - kafka
   vertx_webapp:
+    image: bercelik/producer_vertx_app:v1.0
     build: ./vertx-webapp/
     ports:
       - '8085:8085'
