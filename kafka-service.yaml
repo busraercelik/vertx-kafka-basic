@@ -8,6 +8,7 @@ metadata:
   labels:
     io.kompose.service: kafka
   name: kafka
+  namespace: kafka-cluster
 spec:
   ports:
     - name: "29092"

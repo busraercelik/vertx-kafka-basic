@@ -8,6 +8,7 @@ metadata:
   labels:
     io.kompose.service: zookeeper
   name: zookeeper
+  namespace: kafka-cluster
 spec:
   ports:
     - name: "2181"

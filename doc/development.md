@@ -107,3 +107,11 @@ or
       minikube service vertx-webapp
 
 
+# Get all namespaces in Kubernetes Cluster
+
+      kubens
+
+# Switch to namespace you want 
+
+   
+      kubens <namespace>
