@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose.exe convert
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: vertx-webapp
+  name: vertx-webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: vertx-webapp
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose.exe convert
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: vertx-webapp
+    spec:
+      containers:
+        - image: bercelik/producer_vertx_app:v1.0
+          name: vertx-webapp
+          ports:
+            - containerPort: 8085
+          resources: {}
+      restartPolicy: Always
+status: {}

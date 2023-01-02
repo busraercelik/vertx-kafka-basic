@@ -77,32 +77,6 @@ now you can type messages that will be listening in the consumer.
     http://localhost:8085/api/v1/hello/henry
 
 
-# Local Kubernetes installation 
-
-    1. minikube start
-
-    2. minikube status
-
-    3. kubectl get node
-
-## Kubernetes Configuration
-
-Created 4 Kubernetes configuration files. 
-
-1. ConfigMap with PostgreSQL database endpoint
-   [ConfigMap Doc](https://kubernetes.io/docs/concepts/configuration/configmap/)
-2. Secret with PostgreSQL username and password
-   [Secret Doc](https://kubernetes.io/docs/concepts/configuration/secret/)
-
-   #### Encoding username and password
-   
-   paste the values below in psql-secret.yaml file
-   ```
-      echo -n <username> | openssl base64
-      echo -n <password> | openssl base64 
-   ```
-3. Kubernetes configuration file for deploying a PostgreSQL application and its Service
-4. Kubernetes configuration file for deploying vertx-kafka-basic application with its Service
 
 
 
